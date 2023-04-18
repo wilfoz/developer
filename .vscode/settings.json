@@ -19,7 +19,7 @@
         "titleBar.inactiveBackground": "#1857a499",
         "titleBar.inactiveForeground": "#e7e7e799"
     },
-    "peacock.color": "#42b883",
+    "peacock.color": "#832561",
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
     "python.linting.pylintArgs": [
@@ -46,7 +46,8 @@
     "python.testing.pytestArgs": [
         "src",
         "--ignore",
-        "__pypackages__"
+        "__pypackages__",
+        "-s"
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
