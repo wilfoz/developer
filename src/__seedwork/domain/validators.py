@@ -12,6 +12,7 @@ from .exceptions import ValidationException
 if not settings.configured:
     settings.configure(USE_I18N=False)
 
+
 @dataclass(frozen=True, slots=True)
 class ValidatorRules():
     value: Any
@@ -20,7 +21,7 @@ class ValidatorRules():
     @staticmethod
     def values(value: Any, prop: str):
         return ValidatorRules(value, prop)
-    
+
     def required(self) -> 'ValidatorRules':
         if self.value is None or self.value == "":
             raise ValidationException(f'The {self.prop} is required')
@@ -33,18 +34,20 @@ class ValidatorRules():
 
     def max_length(self, max_length: int) -> 'ValidatorRules':
         if self.value is not None and len(self.value) > max_length:
-            raise ValidationException(f'The {self.prop} must be less than {max_length} characters')
+            raise ValidationException(
+                f'The {self.prop} must be less than {max_length} characters')
         return self
 
     def boolean(self) -> 'ValidatorRules':
         if self.value is not None and self.value is not True and self.value is not False:
             raise ValidationException(f'The {self.prop} must be a boolean')
         return self
-    
+
 
 ErrorFields = Dict[str, List[str]]
 
 PropsValidated = TypeVar('PropsValidated')
+
 
 @dataclass(slots=True)
 class ValidatorFieldsInterface(ABC, Generic[PropsValidated]):
@@ -54,7 +57,8 @@ class ValidatorFieldsInterface(ABC, Generic[PropsValidated]):
     @abc.abstractmethod
     def validate(self, data: Any) -> bool:
         raise NotImplementedError()
-    
+
+
 class DRFValidator(ValidatorFieldsInterface[PropsValidated], ABC):
     def validate(self, data: Serializer):
         serializer = data
@@ -67,6 +71,7 @@ class DRFValidator(ValidatorFieldsInterface[PropsValidated], ABC):
                 for field, _errors in serializer.errors.items()
             }
 
+
 class StrictCharField(CharField):
 
     def to_internal_value(self, data):
@@ -74,7 +79,8 @@ class StrictCharField(CharField):
             self.fail('invalid')
 
         return super().to_internal_value(data)
-    
+
+
 class StrictBooleanField(BooleanField):
     def to_internal_value(self, data):
         with contextlib.suppress(TypeError):

@@ -14,7 +14,7 @@ class TestValidatorsRules(unittest.TestCase):
         self.assertIsInstance(validator, ValidatorRules)
         self.assertEqual(validator.value, 'some value')
         self.assertEqual(validator.prop, 'prop')
-    
+
     def test_required_rule(self):
 
         invalid_data = [
@@ -30,7 +30,7 @@ class TestValidatorsRules(unittest.TestCase):
             self.assertEqual(
                 'The prop is required', assert_error.exception.args[0]
             )
-        
+
         valid_data = [
             {'value': 'test', 'prop': 'prop'},
             {'value': 5, 'prop': 'prop'},
@@ -43,7 +43,7 @@ class TestValidatorsRules(unittest.TestCase):
                 ValidatorRules.values(i['value'], i['prop']).required(),
                 ValidatorRules
             )
-    
+
     def test_string_rule(self):
 
         invalid_data = [
@@ -60,7 +60,7 @@ class TestValidatorsRules(unittest.TestCase):
             self.assertEqual(
                 'The prop must be a string', assert_error.exception.args[0]
             )
-        
+
         valid_data = [
             {'value': 'test', 'prop': 'prop'},
             {'value': "", 'prop': 'prop'},
@@ -72,7 +72,6 @@ class TestValidatorsRules(unittest.TestCase):
                 ValidatorRules.values(i['value'], i['prop']).string(),
                 ValidatorRules
             )
-    
 
     def test_max_length_rule(self):
 
@@ -88,7 +87,7 @@ class TestValidatorsRules(unittest.TestCase):
             self.assertEqual(
                 'The prop must be less than 4 characters', assert_error.exception.args[0]
             )
-        
+
         valid_data = [
             {'value': None, 'prop': 'prop'},
             {'value': "t" * 4, 'prop': 'prop'},
@@ -116,7 +115,7 @@ class TestValidatorsRules(unittest.TestCase):
             self.assertEqual(
                 'The prop must be a boolean', assert_error.exception.args[0]
             )
-        
+
         valid_data = [
             {'value': True, 'prop': 'prop'},
             {'value': False, 'prop': 'prop'},
@@ -128,23 +127,23 @@ class TestValidatorsRules(unittest.TestCase):
                 ValidatorRules.values(i['value'], i['prop']).boolean(),
                 ValidatorRules
             )
-    
+
     def test_throw_a_validation_exception_when_combine_two_or_more_rules(self):
         with self.assertRaises(ValidationException) as assert_error:
             # pylint: disable=expression-not-assigned
             ValidatorRules.values(
-                None, 
+                None,
                 'prop'
             ).required().string().max_length(5)
         self.assertEqual(
             'The prop is required',
             assert_error.exception.args[0]
         )
-    
+
         with self.assertRaises(ValidationException) as assert_error:
             # pylint: disable=expression-not-assigned
             ValidatorRules.values(
-                5, 
+                5,
                 'prop'
             ).required().string().max_length(5)
         self.assertEqual(
@@ -155,7 +154,7 @@ class TestValidatorsRules(unittest.TestCase):
         with self.assertRaises(ValidationException) as assert_error:
             # pylint: disable=expression-not-assigned
             ValidatorRules.values(
-                "t" * 6, 
+                "t" * 6,
                 'prop'
             ).required().string().max_length(5)
         self.assertEqual(
@@ -166,7 +165,7 @@ class TestValidatorsRules(unittest.TestCase):
         with self.assertRaises(ValidationException) as assert_error:
             # pylint: disable=expression-not-assigned
             ValidatorRules.values(
-                6, 
+                6,
                 'prop'
             ).required().boolean()
         self.assertEqual(
@@ -183,13 +182,14 @@ class TestValidatorsRules(unittest.TestCase):
         # pylint: disable=redundant-unittest-assert
         self.assertTrue(True)
 
+
 class TestValidatorFieldsInterfaceUnit(unittest.TestCase):
     def test_throw_error_when_validate_method_not_implemented(self):
         with self.assertRaises(TypeError) as assert_error:
             # pylint: disable=abstract-class-instantiated
             ValidatorFieldsInterface()
         self.assertEqual(
-            assert_error.exception.args[0], 
+            assert_error.exception.args[0],
             "Can't instantiate abstract class ValidatorFieldsInterface with abstract method validate"
         )
 
@@ -203,8 +203,9 @@ class TestValidatorFieldsInterfaceUnit(unittest.TestCase):
         self.assertEqual(validated_data_field.name, 'validated_date')
         self.assertIsNone(validated_data_field.default)
 
+
 class TestDRFValidatorUnit(unittest.TestCase):
-    
+
     @patch.object(Serializer, 'is_valid', return_value=True)
     @patch.object(
         Serializer,
@@ -218,7 +219,7 @@ class TestDRFValidatorUnit(unittest.TestCase):
         self.assertTrue(is_valid)
         self.assertEqual(validator.validated_date, {'field': 'value'})
         mock_is_valid.assert_called()
-    
+
     @patch.object(Serializer, 'is_valid', return_value=False)
     @patch.object(
         Serializer,

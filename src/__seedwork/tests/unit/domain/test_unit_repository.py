@@ -563,7 +563,6 @@ class TestInMemorySearchableRepository(unittest.TestCase):
                 f"The output using sort_dir asc on index {index} is different"
             )
 
-
         arrange_by_desc = [
             {
                 'input': SearchParams(
@@ -630,7 +629,7 @@ class TestInMemorySearchableRepository(unittest.TestCase):
                 item['output'],
                 f"The output using sort_dir desc on index {index} is different"
             )
-    
+
     def test_search_apply_filter_and_sort_and_paginate(self):
 
         items = [

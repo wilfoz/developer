@@ -170,11 +170,13 @@ class InMemorySearchableRepository(
     SearchableRepositoryInterface[ET,
                                   SearchParams[Filter],
                                   SearchResult[ET, Filter]], ABC):
-    
+
     def search(self, input_params: SearchParams[Filter]) -> SearchResult[ET, Filter]:
         items_filtered = self._apply_filter(self.items, input_params.filter)
-        items_sorted = self._apply_sort(items_filtered, input_params.sort, input_params.sort_dir)
-        items_paginated = self._apply_paginate(items_sorted, input_params.page, input_params.per_page)
+        items_sorted = self._apply_sort(
+            items_filtered, input_params.sort, input_params.sort_dir)
+        items_paginated = self._apply_paginate(
+            items_sorted, input_params.page, input_params.per_page)
 
         return SearchResult(
             items=items_paginated,
@@ -189,7 +191,7 @@ class InMemorySearchableRepository(
     @abc.abstractmethod
     def _apply_filter(self, items: List[ET], filter_param: Filter | None) -> List[ET]:
         raise NotImplementedError()
-    
+
     def _apply_sort(self, items: List[ET], sort: str | None, sort_dir: str | None) -> List[ET]:
         if sort and sort in self.sortable_fields:
             is_reverse = sort_dir == 'desc'

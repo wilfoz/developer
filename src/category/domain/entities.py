@@ -15,7 +15,7 @@ class Category(Entity):
     is_active: Optional[bool] = True
     created_at: Optional[datetime] = field(
         default_factory=lambda: datetime.now())
-    
+
     # def __new__(cls, **kwargs):
     #     cls.validate(
     #         name=kwargs.get('name'),
@@ -24,12 +24,11 @@ class Category(Entity):
     #         created_at=kwargs.get('created_at')
     #     )
     #     return super(Category, cls).__new__(cls)
-    
+
     def __post_init__(self):
         if not self.created_at:
             self._set('created_at', datetime.now())
         self.validate()
-
 
     def update(self, name: str, description: str):
         self._set('name', name)
@@ -47,7 +46,6 @@ class Category(Entity):
         # ValidatorRules.values(name, "name").required().string().max_length(255)
         # ValidatorRules.values(description, "description").string()
         # ValidatorRules.values(is_active, "is_active").boolean()
-
 
     def validate(self):
         validator = CategoryValidatorFactory.create()

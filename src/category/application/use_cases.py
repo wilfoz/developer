@@ -25,8 +25,8 @@ class CreateCategoryUseCase(UseCase):
 
     def __to_output(self, category: Category):
         return CategoryOutputMapper\
-                .from_child(CreateCategoryUseCase.Output)\
-                .to_output(category)
+            .from_child(CreateCategoryUseCase.Output)\
+            .to_output(category)
 
     @dataclass(slots=True, frozen=True)
     class Input:
@@ -41,7 +41,7 @@ class CreateCategoryUseCase(UseCase):
 
 @dataclass(slots=True, frozen=True)
 class GetCategoryUseCase(UseCase):
-    
+
     category_repo: CategoryRepository
 
     def execute(self, input_param: 'Input') -> 'Output':
@@ -50,8 +50,8 @@ class GetCategoryUseCase(UseCase):
 
     def __to_output(self, category: Category):
         return CategoryOutputMapper\
-                .from_child(GetCategoryUseCase.Output)\
-                .to_output(category)
+            .from_child(GetCategoryUseCase.Output)\
+            .to_output(category)
 
     @dataclass(slots=True, frozen=True)
     class Input:

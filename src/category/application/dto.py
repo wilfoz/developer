@@ -13,7 +13,9 @@ class CategoryOutput:
     is_active: bool
     created_at: datetime
 
+
 Output = TypeVar('Output', bound=CategoryOutput)
+
 
 @dataclass(frozen=True, slots=True)
 class CategoryOutputMapper:
@@ -23,11 +25,11 @@ class CategoryOutputMapper:
     @staticmethod
     def from_child(output_child: Output):
         return CategoryOutputMapper(output_child)
-    
+
     @staticmethod
     def without_child():
         return CategoryOutputMapper()
-    
+
     def to_output(self, category: Category) -> CategoryOutput:
         return self.output_child(
             id=category.id,

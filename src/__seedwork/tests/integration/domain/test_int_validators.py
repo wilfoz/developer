@@ -3,6 +3,7 @@ from __seedwork.domain.validators import DRFValidator, StrictBooleanField, Stric
 from django.db.migrations import serializer
 from rest_framework import serializers
 
+
 class StubSerializer(serializers.Serializer):
     name = serializers.CharField()
     price = serializers.IntegerField()
@@ -37,6 +38,7 @@ class TestDRFValidatorIntegration(unittest.TestCase):
                 'price': 5
             }
         )
+
 
 class TestStrictCharFieldUnit(unittest.TestCase):
 

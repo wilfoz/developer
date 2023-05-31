@@ -15,8 +15,10 @@ class TestCategoryOutputDTO(unittest.TestCase):
             'created_at': datetime
         })
 
+
 class CategoryOutputChild(CategoryOutput):
     pass
+
 
 class TestCategoryOutpuMapperUnit(unittest.TestCase):
 

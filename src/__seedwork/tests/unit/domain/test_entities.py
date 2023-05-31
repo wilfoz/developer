@@ -51,7 +51,6 @@ class TestEntityUnit(unittest.TestCase):
             }
         )
 
-
     def test_set_method(self):
         entity = StubEntity(prop1='value1', prop2="value2")
         # pylint: disable=protected-access

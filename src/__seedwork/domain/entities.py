@@ -12,7 +12,7 @@ class Entity(ABC):
     @property
     def id(self):
         return str(self.unique_entity_id)
-    
+
     def _set(self, name: str, value: Any):
         object.__setattr__(self, name, value)
         return self
@@ -22,7 +22,7 @@ class Entity(ABC):
         entity_dict.pop('unique_entity_id')
         entity_dict['id'] = self.id
         return entity_dict
-    
+
     @classmethod
     def get_field(cls, entity_field: str) -> Field:
         # pylint: disable=no-member

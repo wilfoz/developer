@@ -8,7 +8,7 @@ class TestUseCases(unittest.TestCase):
         with self.assertRaises(TypeError) as assert_error:
             # pylint: disable=abstract-class-instantiated
             UseCase()
-        self.assertEqual(assert_error.exception.args[0], 
-                        "Can't instantiate abstract class UseCase with abstract " +
-                        "method execute"
-                        )
+        self.assertEqual(assert_error.exception.args[0],
+                         "Can't instantiate abstract class UseCase with abstract " +
+                         "method execute"
+                         )

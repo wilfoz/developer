@@ -88,7 +88,7 @@ class TestCreateCategoryUseCaseUnit(unittest.TestCase):
             is_active=True,
             created_at=self.category_repo.items[2].created_at
         ))
-    
+
 
 class TestGetCategoryUseCaseUnit(unittest.TestCase):
     use_case: GetCategoryUseCase
@@ -110,7 +110,8 @@ class TestGetCategoryUseCaseUnit(unittest.TestCase):
         input_param = GetCategoryUseCase.Input('fake id')
         with self.assertRaises(NotFoundException) as assert_error:
             self.use_case.execute(input_param)
-        self.assertEqual(assert_error.exception.args[0], "Entity not found using ID 'fake id'")
+        self.assertEqual(
+            assert_error.exception.args[0], "Entity not found using ID 'fake id'")
 
     def test_output(self):
         self.assertTrue(
@@ -133,7 +134,7 @@ class TestGetCategoryUseCaseUnit(unittest.TestCase):
                 is_active=True,
                 created_at=self.category_repo.items[0].created_at
             ))
-    
+
 
 class TestListCategoriesUseCase(unittest.TestCase):
     use_case: ListCategoriesUseCase
@@ -143,7 +144,6 @@ class TestListCategoriesUseCase(unittest.TestCase):
         self.category_repo = CategoryInMemoryRepository()
         self.use_case = ListCategoriesUseCase(self.category_repo)
 
-    
     def test_instance_use_case(self):
         self.assertIsInstance(self.use_case, UseCase)
 
@@ -152,12 +152,10 @@ class TestListCategoriesUseCase(unittest.TestCase):
             ListCategoriesUseCase.Input, SearchInput
         ))
 
-    
     def test_output(self):
         self.assertTrue(issubclass(
             ListCategoriesUseCase.Output, PaginationOutput
         ))
-
 
     def test__to_output(self):
         entity = Category(name='Movie')
@@ -224,7 +222,6 @@ class TestListCategoriesUseCase(unittest.TestCase):
                 last_page=1
             ))
 
-
     def test_execute_using_pagination_and_sort_and_filter(self):
         items = [
             Category(name='a'),
@@ -246,11 +243,11 @@ class TestListCategoriesUseCase(unittest.TestCase):
         output = self.use_case.execute(input_param)
         self.assertEqual(output, ListCategoriesUseCase.Output(
             items=list(
-                    map(
-                        CategoryOutputMapper.without_child().to_output,
-                        [items[1], items[2]]
-                    )
-                ),
+                map(
+                    CategoryOutputMapper.without_child().to_output,
+                    [items[1], items[2]]
+                )
+            ),
             total=3,
             current_page=1,
             per_page=2,
@@ -264,23 +261,21 @@ class TestListCategoriesUseCase(unittest.TestCase):
             sort_dir='desc',
             filter='a'
         )
-        
+
         output = self.use_case.execute(input_param)
         self.assertEqual(output, ListCategoriesUseCase.Output(
             items=list(
-                    map(
-                        CategoryOutputMapper.without_child().to_output, 
-                        [items[0], items[2]]
-                    )
-                ),
+                map(
+                    CategoryOutputMapper.without_child().to_output,
+                    [items[0], items[2]]
+                )
+            ),
             total=3,
             current_page=1,
             per_page=2,
             last_page=2
         ))
 
-
-        
         input_param = ListCategoriesUseCase.Input(
             page=2,
             per_page=2,
@@ -288,15 +283,15 @@ class TestListCategoriesUseCase(unittest.TestCase):
             sort_dir='desc',
             filter='a'
         )
-        
+
         output = self.use_case.execute(input_param)
         self.assertEqual(output, ListCategoriesUseCase.Output(
             items=list(
-                    map(
-                        CategoryOutputMapper.without_child().to_output, 
-                        [items[1]]
-                    )
-                ),
+                map(
+                    CategoryOutputMapper.without_child().to_output,
+                    [items[1]]
+                )
+            ),
             total=3,
             current_page=2,
             per_page=2,
