@@ -10,6 +10,8 @@ db.sqlite3
 envs/.env
 envs/.env.test
 envs/.env.e2e
+.coverage
+__coverage
 
 docker-compose.override.yaml
 

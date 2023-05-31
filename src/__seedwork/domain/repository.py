@@ -1,6 +1,6 @@
 from abc import ABC
 import abc
-from dataclasses import dataclass, field
+from dataclasses import Field, dataclass, field
 import math
 from typing import Any, Generic, Optional, TypeVar, List
 from __seedwork.domain.value_objects import UniqueEntityId

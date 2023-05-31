@@ -31,7 +31,8 @@
         "${workspaceFolder}/__pypackages__/3.10/lib"
     ],
     "python.analysis.extraPaths": [
-        "${workspaceFolder}/__pypackages__/3.10/lib"
+        "${workspaceFolder}/__pypackages__/3.10/lib",
+        "./src"
     ],
     "python.testing.autoTestDiscoverOnSaveEnabled": true,
     "python.analysis.autoImportCompletions": true,
