@@ -1,6 +1,5 @@
 from typing import List
 
-from tomlkit import item
 from __seedwork.domain.repository import InMemorySearchableRepository
 from category.domain.entities import Category
 from category.domain.repositories import CategoryRepository

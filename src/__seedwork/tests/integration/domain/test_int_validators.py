@@ -1,7 +1,6 @@
 import unittest
-from __seedwork.domain.validators import DRFValidator, StrictBooleanField, StrictCharField
-from django.db.migrations import serializer
 from rest_framework import serializers
+from __seedwork.domain.validators import DRFValidator, StrictBooleanField, StrictCharField
 
 
 class StubSerializer(serializers.Serializer):

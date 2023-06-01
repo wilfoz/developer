@@ -65,11 +65,11 @@ class DRFValidator(ValidatorFieldsInterface[PropsValidated], ABC):
         if serializer.is_valid():
             self.validated_date = dict(serializer.validated_data)
             return True
-        else:
-            self.errors = {
-                field: [str(_error) for _error in _errors]
-                for field, _errors in serializer.errors.items()
-            }
+
+        self.errors = {
+            field: [str(_error) for _error in _errors]
+            for field, _errors in serializer.errors.items()
+        }
 
 
 class StrictCharField(CharField):
@@ -88,6 +88,6 @@ class StrictBooleanField(BooleanField):
                 return True
             if data is False:
                 return False
-            elif data is None and self.allow_null:
+            if data is None and self.allow_null:
                 return None
         self.fail('invalid', input=data)

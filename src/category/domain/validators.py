@@ -19,7 +19,7 @@ class CategoryValidator(DRFValidator):
         return super().validate(rules)
 
 
-class CategoryValidatorFactory:
+class CategoryValidatorFactory:  # pylint: disable=too-few-public-methods
 
     @staticmethod
     def create():
