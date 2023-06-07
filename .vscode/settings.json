@@ -1,56 +1,49 @@
 {
-    "peacock.remoteColor": "#1857a4",
-    "workbench.colorCustomizations": {
-        "activityBar.activeBackground": "#1f6fd0",
-        "activityBar.background": "#1f6fd0",
-        "activityBar.foreground": "#e7e7e7",
-        "activityBar.inactiveForeground": "#e7e7e799",
-        "activityBarBadge.background": "#ee90bb",
-        "activityBarBadge.foreground": "#15202b",
-        "commandCenter.border": "#e7e7e799",
-        "sash.hoverBorder": "#1f6fd0",
-        "statusBar.background": "#1857a4",
-        "statusBar.foreground": "#e7e7e7",
-        "statusBarItem.hoverBackground": "#1f6fd0",
-        "statusBarItem.remoteBackground": "#1857a4",
-        "statusBarItem.remoteForeground": "#e7e7e7",
-        "titleBar.activeBackground": "#1857a4",
-        "titleBar.activeForeground": "#e7e7e7",
-        "titleBar.inactiveBackground": "#1857a499",
-        "titleBar.inactiveForeground": "#e7e7e799"
-    },
-    "peacock.color": "#832561",
-    "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true,
-    "python.linting.pylintArgs": [
-        "--ignore=C0115",
-        "--ignore=C0116",
-        "--ignore=C0111"
-    ],
-    "python.autoComplete.extraPaths": [
-        "${workspaceFolder}/__pypackages__/3.10/lib"
-    ],
-    "python.analysis.extraPaths": [
-        "${workspaceFolder}/__pypackages__/3.10/lib",
-        "./src"
-    ],
-    "python.testing.autoTestDiscoverOnSaveEnabled": true,
-    "python.analysis.autoImportCompletions": true,
-    "python.analysis.indexing": true,
-    "python.testing.unittestArgs": [
-        "-v",
-        "-s",
-        "./src",
-        "-p",
-        "test_*.py"
-    ],
-    "python.testing.pytestArgs": [
-        "src",
-        "--ignore",
-        "__pypackages__",
-        "-s"
-    ],
-    "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true,
-    
+  "peacock.remoteColor": "#1857a4",
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#1f6fd0",
+    "activityBar.background": "#1f6fd0",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#ee90bb",
+    "activityBarBadge.foreground": "#15202b",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#1f6fd0",
+    "statusBar.background": "#1857a4",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#1f6fd0",
+    "statusBarItem.remoteBackground": "#1857a4",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#1857a4",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#1857a499",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#215732",
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
+  "python.linting.pylintPath": "pylint",
+  "python.linting.pylintArgs": [
+    "--ignore=C0115",
+    "--ignore=C0116",
+    "--ignore=C0111"
+  ],
+  "python.autoComplete.extraPaths": [
+    "${workspaceFolder}/__pypackages__/3.10/lib"
+  ],
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/__pypackages__/3.10/lib",
+    "./src"
+  ],
+  "python.testing.autoTestDiscoverOnSaveEnabled": true,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.indexing": true,
+  "python.testing.unittestArgs": ["-v", "-s", "./src", "-p", "test_*.py"],
+  "python.testing.pytestArgs": ["src", "--ignore", "__pypackages__", "-s"],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "python.formatting.provider": "none"
 }
