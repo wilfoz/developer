@@ -8,7 +8,6 @@ from core.category.infra.in_memory.repositories import CategoryInMemoryRepositor
 @api_view(['POST'])
 def hello_world(request: Request):
     create_use_case = CreateCategoryUseCase(CategoryInMemoryRepository())
-    print(request.data)
     input_param = CreateCategoryUseCase.Input(request.data['name'])
     output = create_use_case.execute(input_param)
     return Response(asdict(output))
