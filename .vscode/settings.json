@@ -19,7 +19,7 @@
     "titleBar.inactiveBackground": "#1857a499",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.color": "#215732",
+  "peacock.color": "#61dafb",
   "python.linting.pylintEnabled": true,
   "python.linting.enabled": true,
   "python.linting.pylintPath": "pylint",
@@ -43,7 +43,7 @@
   "python.testing.unittestEnabled": false,
   "python.testing.pytestEnabled": true,
   "[python]": {
-    "editor.defaultFormatter": "ms-python.autopep8"
+    "editor.defaultFormatter": "ms-python.python"
   },
   "python.formatting.provider": "none"
 }
