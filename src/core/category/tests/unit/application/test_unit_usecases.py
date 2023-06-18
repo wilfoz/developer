@@ -1,8 +1,8 @@
-from datetime import datetime, timedelta
-from typing import Optional
 import unittest
+from datetime import timedelta
+from typing import Optional
 from unittest.mock import patch
-from urllib import request
+from django.utils import timezone
 from core.__seedwork.application.dto import PaginationOutput, PaginationOutputMapper, SearchInput
 from core.__seedwork.application.use_cases import UseCase
 from core.__seedwork.domain.exceptions import NotFoundException
@@ -12,8 +12,6 @@ from core.category.application.use_cases import CreateCategoryUseCase, DeleteCat
 from core.category.domain.entities import Category
 from core.category.domain.repositories import CategoryRepository
 from core.category.infra.in_memory.repositories import CategoryInMemoryRepository
-from django.conf.locale import ca
-from isort import wrap
 
 
 class TestCreateCategoryUseCaseUnit(unittest.TestCase):
@@ -201,7 +199,7 @@ class TestListCategoriesUseCase(unittest.TestCase):
     def test_execute_using_empty_search_params(self):
         self.category_repo.items = [
             Category(name='test 1'),
-            Category(name='test 2', created_at=datetime.now() +
+            Category(name='test 2', created_at=timezone.now() +
                      timedelta(seconds=200)),
         ]
         with patch.object(

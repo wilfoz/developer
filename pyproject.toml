@@ -5,6 +5,7 @@ dev = [
     "pylint>=2.17.2",
     "pytest>=7.3.1",
     "pytest-cov>=4.1.0",
+    "model-bakery>=1.12.0",
 ]
 [tool.pdm.scripts]
 manage = "python ./src/django_app/manage.py"

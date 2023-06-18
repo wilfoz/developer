@@ -16,7 +16,7 @@ class ValueObject(ABC):
             else json.dumps({field_name: getattr(self, field_name) for field_name in fields_name})
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class UniqueEntityId(ValueObject):
 
     id: str = field(  # pylint: disable=invalid-name
@@ -34,5 +34,5 @@ class UniqueEntityId(ValueObject):
         except ValueError as ex:
             raise InvalidUuidException() from ex
 
-    def __str__(self) -> str:
-        return f"{self.id}"
+    # def __str__(self) -> str:
+    #     return f"{self.id}"
